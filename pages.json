@@ -1,0 +1,129 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "昼白读书网"
+			}
+		},
+		{
+		    "path" : "pages/booklists/booklists",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "小说大全",
+		        "enablePullDownRefresh": false,
+				"onReachBottomDistance": 200
+		    }
+		    
+		},
+		{
+		    "path" : "pages/classify/classify",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "分类",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
+            "path" : "pages/bookrack/bookrack",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "书架",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/users/users",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "会员中心",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/choiceness/choiceness",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "精选",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        
+        ,{
+            "path" : "pages/particulars/particulars",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/directories/directories",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "全部章节",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/readbook/readbook",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+		,{
+		    "path" : "pages/searchbooks/searchbooks",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "小说搜索",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "昼白读书网",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"selectedColor":"#B50E03",
+		"color":"#ccc",
+		"list": [
+			{
+				"text":"首页",
+				"pagePath":"pages/index/index",
+				"iconPath":"static/icon/home.png",
+				"selectedIconPath":"static/icon/home-active.png"
+			},
+			{
+				"text":"精选",
+				"pagePath":"pages/choiceness/choiceness",
+				"iconPath":"static/icon/cart.png",
+				"selectedIconPath":"static/icon/cart-active.png"
+			},
+			{
+				"text":"书架",
+				"pagePath":"pages/bookrack/bookrack",
+				"iconPath":"static/icon/news.png",
+				"selectedIconPath":"static/icon/news-active.png"
+			},
+			{
+				"text":"会员",
+				"pagePath":"pages/users/users",
+				"iconPath":"static/icon/member.png",
+				"selectedIconPath":"static/icon/member-active.png"
+			}
+		]
+	}
+}

@@ -92,9 +92,13 @@
 			this.bookId = options.id
 			this.getParticulars()
 		},
+		// 监听下拉刷新
+		onPullDownRefresh () {
+		    this.getParticulars(this.stop)
+		},
 		methods: {
 			// 获取数据
-			getParticulars() {
+			getParticulars(callback) {
 				uni.request({
 							// #ifdef H5
 							url: '/api/novel' + '/contentapi',
@@ -109,6 +113,7 @@
 							success: res => {
 								// console.log(res.data)
 								this.bookParticulars = res.data
+								callback()
 							},
 							fail: err => {
 								// console.log(err)
@@ -126,6 +131,10 @@
 				uni.navigateTo({
 					url: '../directories/directories?id=' + val
 				})
+			},
+			// 停止下拉刷新
+			stop() {
+				uni.stopPullDownRefresh()
 			}
 		},
 		filters: {
@@ -273,7 +282,7 @@
 	.latest-chapter {
 		margin: 10rpx 0;
 		padding: 10rpx;
-		height: 140rpx;
+		height: 160rpx;
 		width: 100%;
 		line-height: 60rpx;
 		background-color: #fff;
@@ -306,7 +315,7 @@
 		.newest-title::after {
 			position: absolute;
 			top: 50%;
-			margin-top: -25rpx;
+			margin-top: -20rpx;
 			right: 20rpx;
 			content: '最新';
 			width: 80rpx;

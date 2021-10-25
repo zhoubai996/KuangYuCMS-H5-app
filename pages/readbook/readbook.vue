@@ -1,12 +1,21 @@
 <template>
-	<view class="Box">	
-			<view class="title">
-				{{ section_title }}
-			</view>
-			<view class="content">
-				<rich-text :nodes="content_text" class="content-box"></rich-text>
-			</view>
-			<button type="primary" @click="nextContent(nextKey)">点击加载下一页</button>
+	<view class="Box">
+		<orange-fullloading 
+		text="加载中..." 
+		textcolor="#FFA726" 
+		textsize=40 
+		v-if="orangeFlag">
+		</orange-fullloading>
+		<view class="title">
+			{{ section_title }}
+		</view>
+		<view class="content">
+			<rich-text :nodes="content_text" class="content-box"></rich-text>
+		</view>
+		<button type="primary" :loading="flag" 
+		@click="nextContent(nextKey)">
+		{{ text }}
+		</button>
 	</view>
 </template>
 <script>
@@ -17,8 +26,10 @@ export default{
 			content_text: '',
 			id:'',
 			key: '',
-			nextKey: ''
-			
+			nextKey: '',
+			flag: false,
+			text: '点击加载下一页',
+			orangeFlag: true,
 		}
 	},
 	onLoad(e) {
@@ -43,9 +54,15 @@ export default{
 							api_key: 'zhoubai996'
 						},
 						success: res => {
+							// console.log(res.data)
+							if (res.data === null) {
+								this.flag = false
+								return this.text = '没有章节了'
+							}
 							this.nextKey = res.data.next.id
 							this.section_title = res.data.title
 							this.content_text = res.data.content
+							this.orangeFlag = false
 							callback()
 						},
 						fail: err => {
@@ -55,11 +72,15 @@ export default{
 		},
 		// 加载下一页
 		nextContent(id) {
+			this.flag = true
+			this.text = '加载中'
 			this.key = id
 			this.getArticle(this.getTop)
 		},
 		// 返回顶部
 		getTop() {
+			this.flag = false
+			this.text = '点击加载下一页'
 			uni.pageScrollTo({
 			　　scrollTop: 0, 
 				duration: 300,

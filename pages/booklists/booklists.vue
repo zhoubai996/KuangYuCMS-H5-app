@@ -1,4 +1,5 @@
 <template>
+	<!-- 小说列表页 -->
 	<view class="books-content">
 		<view class="books-box" v-for="item in booksLists" :key="item.id" @click="goToParticulars(item.id)">
 			<image :src="item.pic | links"></image>
@@ -23,7 +24,6 @@
 				category: 0,
 				classIfy: '',
 				pageIndex: 1,
-				bookImage: ''
 			}
 		},
 		onReachBottom () {
@@ -36,8 +36,12 @@
 			this.classIfy = options.title
 			this.getBooksList()
 		},
+		// 监听下拉刷新
+		onPullDownRefresh () {
+		    this.getBooksList(this.stop)
+		},
 		methods: {
-			getBooksList() {
+			getBooksList(callback) {
 				uni.request({
 							// #ifdef H5
 							url: '/api/novel' + '/listsapi',
@@ -51,9 +55,8 @@
 								page: this.pageIndex
 							},
 							success: res => {
-								// console.log(res.data.pic)
-								this.bookImage = res.data.pic
 								this.booksLists = [...this.booksLists, ...res.data]
+								callback()
 							},
 							fail: err => {
 								// console.log('失败'+err)
@@ -66,6 +69,10 @@
 				uni.navigateTo({
 					url: '../particulars/particulars?id=' + val
 				})
+			},
+			// 停止下拉刷新
+			stop() {
+				uni.stopPullDownRefresh()
 			}
 		},
 		filters: {

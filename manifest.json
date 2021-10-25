@@ -2,8 +2,8 @@
     "name" : "昼白读书",
     "appid" : "__UNI__8B7A1D7",
     "description" : "昼白读书网测试产品",
-    "versionName" : "1.0.0",
-    "versionCode" : "100",
+    "versionName" : "1.4.0",
+    "versionCode" : 250,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {

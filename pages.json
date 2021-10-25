@@ -11,7 +11,7 @@
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "小说大全",
-		        "enablePullDownRefresh": false,
+		        "enablePullDownRefresh": true,
 				"onReachBottomDistance": 200
 		    }
 		    
@@ -58,7 +58,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "详情",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -67,7 +67,7 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "全部章节",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -85,7 +85,8 @@
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "小说搜索",
-		        "enablePullDownRefresh": false
+		        "enablePullDownRefresh": false,
+				"onReachBottomDistance": 200
 		    }
 		    
 		}
@@ -107,8 +108,8 @@
 				"selectedIconPath":"static/icon/home-active.png"
 			},
 			{
-				"text":"精选",
-				"pagePath":"pages/choiceness/choiceness",
+				"text":"搜索",
+				"pagePath":"pages/searchbooks/searchbooks",
 				"iconPath":"static/icon/cart.png",
 				"selectedIconPath":"static/icon/cart-active.png"
 			},

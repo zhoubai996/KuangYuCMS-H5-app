@@ -19,8 +19,12 @@
 			this.bookId = options.id
 			this.getDirectories()
 		},
+		// 监听下拉刷新
+		onPullDownRefresh () {
+		    this.getDirectories(this.stop)
+		},
 		methods: {
-			getDirectories() {
+			getDirectories(callback) {
 				uni.request({
 							// #ifdef H5
 							url: '/api/novel' + '/contentapi',
@@ -36,6 +40,7 @@
 								// console.log(res.data.chapter)
 								this.bookParticulars = res.data.chapter
 								this.bookPar = res.data
+								callback()
 							},
 							fail: err => {
 								// console.log('失败' + err)
@@ -47,6 +52,10 @@
 				uni.navigateTo({
 					url: '../readbook/readbook?id=' + id + '&key=' + key
 				})
+			},
+			// 停止下拉刷新
+			stop() {
+				uni.stopPullDownRefresh()
 			}
 		}
 	}
